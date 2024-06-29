@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Torneo {
+  idtorneo: ID!
+  Descripcion: String!
+  Estado: String!
+}
+
+type Partido {
+  idpartido: ID!
+  equipo1Id: ID!
+  equipo2Id: ID!
+  golesEquipo1: String!
+  golesEquipo2: String!
+  observacion: String!
+  Estado: String!
+}
+
+type Equipo {
+  idequipo: ID!
+  Descripcion: String!
+  Serie: String!
+  Estado: String!
+}
+
+type Query {
+  equipos(estado: String): [Equipo!]!
+  partidos(estado: String): [Partido!]!
+  torneos(estado: String): [Torneo!]!
+}
+
+type Mutation {
+  createEquipo(createEquipoDto: CreateEquipoDto!): Equipo!
+  updateEquipo(id: Float!, updateEquipoDto: UpdateEquipoDto!): Equipo!
+  deleteEquipo(id: Float!): Boolean!
+  createPartido(createPartidoDto: CreatePartidoDto!): Partido!
+  updatePartido(id: ID!, updatePartidoDto: UpdatePartidoDto!): Partido!
+  deletePartido(id: ID!): Boolean!
+  createTorneo(createTorneoDto: CreateTorneoDto!): Torneo!
+  deleteTorneo(id: ID!): Boolean!
+}
+
+input CreateEquipoDto {
+  Descripcion: String!
+  Serie: String!
+  Estado: String
+}
+
+input UpdateEquipoDto {
+  Descripcion: String
+  Serie: String
+  Estado: String
+}
+
+input CreatePartidoDto {
+  idtorneo: ID!
+  equipo1Id: ID!
+  equipo2Id: ID!
+  golesEquipo1: String!
+  golesEquipo2: String!
+  observacion: String!
+  Estado: String!
+}
+
+input UpdatePartidoDto {
+  equipo1Id: ID
+  equipo2Id: ID
+  golesEquipo1: String
+  golesEquipo2: String
+  observacion: String
+  Estado: String
+}
+
+input CreateTorneoDto {
+  Descripcion: String!
+  Estado: String
+}
